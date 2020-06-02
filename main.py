@@ -37,18 +37,7 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('uploaded_file',
                                     filename=filename))
-    return '''
-    <!doctype html>
-    <head>
-    <title>Capture the Flag</title>
-    </head>
-    <h1> Welcome to Capture the Flag</h1>
-    <p> Upload an image of a flag to get started.</p>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    '''
+    return render_template('home.html')
 
 
 @app.route('/uploads/<filename>')
