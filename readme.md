@@ -1,3 +1,9 @@
+# Capture the Flag
+
+By Jack Burgess, Sophie Byrne, Sophie Debs, and Anna Matusewicz
+
+## To Start:
+
 ```bash
 python3 -m venv env
 pip3 install flask
