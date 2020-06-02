@@ -5,7 +5,6 @@ from gtts import gTTS
 import os
 
 def create_model(filename):
-    print(filename)
     authenticator = IAMAuthenticator("X0t0F11_IQ978kLmsy80im1ldnxh6h06dJh4-c17kRVM")
     visual_recognition = VisualRecognitionV3(
         version='2018-03-19',
@@ -17,8 +16,9 @@ def create_model(filename):
             images_file=images_file,
             threshold='0.6',
             owners=["me"]).get_result()
-        result = classes['images'][0]['classifiers'][0]['classes'][0]
-        if result['score'] > .8:
-            return result['class']
+        result = classes['images'][0]['classifiers'][0]['classes']
+        if len(result) > 0 and result[0]['score'] > .7:
+            pretty = result[0]['class'].split('.')[0]
+            return pretty
         else:
             return

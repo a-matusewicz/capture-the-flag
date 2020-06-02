@@ -1,15 +1,15 @@
-<!doctype html>
-<head>
-    <title>Capture the flag</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='../main.css') }}">
-</head>
-<body>
-    {% if flag %}
-        <h2> This flag is from {{flag}} .</h2>
-    {% endif %}
-    {% if not flag %}
-        <h2> I'm not really sure what's going on here. </h2>
-    {% endif %}
+{% extends "layout.html" %}
+{% block content %}
+    <div class="display">
+        {% if flag %}
+            <h1> This flag is from {{flag}}.</h1>
+            <a href="https://wikipedia.org/wiki/{{flag}}" target="_blank">Learn more about {{flag}}!</a> 
+        {% endif %}
+        {% if not flag %}
+            <h1> Sorry, we couln't find a match for your flag. </h1>
+        {% endif %}
+        <a href="/">Submit another flag.</a> 
+    </div>
     <p>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -21,4 +21,4 @@
         {% endif %}
         {% endwith %}
     </p>
-</body>
+{% endblock %}
