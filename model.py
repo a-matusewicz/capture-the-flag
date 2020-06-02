@@ -17,8 +17,10 @@ def create_model(filename):
             images_file=images_file,
             threshold='0.6',
             owners=["me"]).get_result()
-        result = classes['images'][0]['classifiers'][0]['classes'][0]
-        if result['score'] > .8:
-            return result['class']
+        print(classes)
+        result = classes['images'][0]['classifiers'][0]['classes']
+        if len(result) > 0 and result[0]['score'] > .7:
+            pretty = result[0]['class'].split('.')[0]
+            return pretty
         else:
             return

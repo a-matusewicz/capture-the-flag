@@ -2,11 +2,13 @@
 <title>Capture the flag</title>
 
 {% if flag %}
-	<h2> This flag is from {{flag}} .</h2>
+    <h2> This flag is from {{flag}}.</h2>
+    <a href="https://wikipedia.org/wiki/{{flag}}" target="_blank">Learn more about {{flag}}!</a> 
 {% endif %}
 {% if not flag %}
-	<h2> I'm not really sure what's going on here. </h2>
+	<h2> Sorry, we couln't find a match for your flag. </h2>
 {% endif %}
+<a href="/">Submit another flag.</a> 
 <p>
 	{% with messages = get_flashed_messages() %}
 	  {% if messages %}
