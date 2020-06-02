@@ -1,0 +1,20 @@
+<!doctype html>
+<title>Capture the flag</title>
+
+{% if flag %}
+	<h2> This flag is from {{flag}} .</h2>
+{% endif %}
+{% if not flag %}
+	<h2> I'm not really sure what's going on here. </h2>
+{% endif %}
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
